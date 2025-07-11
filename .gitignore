@@ -65,4 +65,5 @@ AssetStoreTools*
 sysinfo.txt
 ############################################
 !/docs/
+!docs/Build/
 # билди в папку /docs
