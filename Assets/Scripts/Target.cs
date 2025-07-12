@@ -8,7 +8,7 @@ public class Target : MonoBehaviour
     private Rigidbody targetRb;
     private GameManager gameManager;
 
-    private float randForceMin = 12;
+    private float randForceMin = 14;
     private float randForceMax = 16;
     private float randTorqueMax = 10;
     private float randPosX = 4;
@@ -29,19 +29,22 @@ public class Target : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnMouseDown()
     {
-        Destroy(gameObject);
-        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
-        gameManager.UpdateScore(pointValue);
+        if (gameManager.isGameActive)
+        {
+            Destroy(gameObject);
+            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+            gameManager.UpdateScore(pointValue);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject); 
+        Destroy(gameObject);
 
         if (!other.gameObject.CompareTag("Bad"))
         {
